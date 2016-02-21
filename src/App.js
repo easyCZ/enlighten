@@ -4,22 +4,22 @@ import { bindActionCreators } from 'redux'
 
 import Contacts from './contacts/Contacts';
 import Chat from './chat/Chat';
+const {Row, Col} = require('react-flexbox-grid');
 
 
 const App = () => (
-  <div id="Messenger" className="row top-xs" style={styles}>
+  <Row id="Messenger" style={styles}>
 
-    <div id="MessengerContacts" className="col-xs-1 col-sm-4 col-md-3" style={styles}>
+    <Col xs={1} sm={4} md={3} id="MessengerContacts" style={styles}>
       <Contacts />
-    </div>
+    </Col>
 
-    <div id="MessengerChat" className="col-xs-11 col-sm-8 col-md-9" style={styles}>
+    <Col id="MessengerChat" xs={11} sm={8} md={9} style={styles}>
       <Chat />
-    </div>
+    </Col>
 
-  </div>
+  </Row>
 )
-
 
 const styles = {
   width: '100vw',
