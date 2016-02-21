@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import Contacts from './contacts/Contacts';
 import Chat from './chat/Chat';
-const {Row, Col} = require('react-flexbox-grid');
+import {Row, Col} from 'react-flexbox-grid';
 
 
 const App = () => (
@@ -22,8 +22,8 @@ const App = () => (
 )
 
 const styles = {
-  width: '100vw',
-  height: '100vh',
+  // width: '100vw',
+  // height: '100vh',
   margin: 0,
   boxShadow: '0 0 0 0.5px rgba(0, 0, 0, 0.2)'
 }

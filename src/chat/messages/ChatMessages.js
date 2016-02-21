@@ -1,7 +1,9 @@
 import React from 'react';
+import { Col } from 'react-flexbox-grid';
+
 
 const ChatMessages = () => (
-  <div className="col-xs-12">Chat Messages</div>
+  <Col xs={12}>Chat Messages</Col>
 )
 
 export default ChatMessages

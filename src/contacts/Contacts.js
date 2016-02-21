@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import Button from 'react-toolbox/lib/button';
+import {Row, Col} from 'react-flexbox-grid';
+
+import ContactsToolbar from './toolbar/ContactsToolbar';
+import Conversations from './conversations/Conversations';
 
 
 export default class Contacts extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-xs-12">
-          <Button label="Hello world" raised accent />
-        </div>
-        <div className="col-xs-12">contacts</div>
-      </div>
+      <Row middle="xs">
+        <Col xs={12} style={{backgroundColor: 'rgba(0, 0, 0, 0.15)'}}>
+          <ContactsToolbar />
+        </Col>
+        <Col xs={12}>
+          <Conversations />
+        </Col>
+      </Row>
     )
   }
 

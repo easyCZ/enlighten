@@ -1,8 +1,8 @@
 import React from 'react';
-
+import { Col } from 'react-flexbox-grid';
 
 const ChatInput = () => (
-  <div className="col-xs-12">Chat Input</div>
+  <Col xs={12}>Chat Input</Col>
 )
 
 export default ChatInput
