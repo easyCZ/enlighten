@@ -1,39 +1,31 @@
 import React, { Component } from 'react';
-import { NICE, SUPER_NICE } from './colors';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { counter: 0 };
-    this.interval = setInterval(() => this.tick(), 1000);
-  }
+import Contacts from './contacts/Contacts';
+import Chat from './chat/Chat';
 
-  tick() {
-    this.setState({
-      counter: this.state.counter + this.props.increment
-    });
-  }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+const App = () => (
+  <div id="Messenger" className="row top-xs" style={styles}>
 
-  render() {
-    return (
-      <h1 style={{ color: this.props.color }}>
-        Counter ({this.props.increment}): {this.state.counter}
-      </h1>
-    );
-  }
+    <div id="MessengerContacts" className="col-xs-1 col-sm-4 col-md-3" style={styles}>
+      <Contacts />
+    </div>
+
+    <div id="MessengerChat" className="col-xs-11 col-sm-8 col-md-9" style={styles}>
+      <Chat />
+    </div>
+
+  </div>
+)
+
+
+const styles = {
+  width: '100vw',
+  height: '100vh',
+  margin: 0,
+  boxShadow: '0 0 0 0.5px rgba(0, 0, 0, 0.2)'
 }
 
-export class App extends Component {
-  render() {
-    return (
-      <div>
-        <Counter increment={1} color={NICE} />
-        <Counter increment={5} color={SUPER_NICE} />
-      </div>
-    );
-  }
-}
+export default App;
