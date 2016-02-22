@@ -7,19 +7,25 @@ import Chat from './chat/Chat';
 import {Row, Col} from 'react-flexbox-grid';
 
 
-const App = () => (
-  <Row id="Messenger" style={styles}>
+class App extends React.Component {
 
-    <Col xs={1} sm={4} md={3} id="MessengerContacts" style={styles}>
-      <Contacts />
-    </Col>
+  render() {
+    return (
+      <Row id="Messenger" style={styles}>
 
-    <Col id="MessengerChat" xs={11} sm={8} md={9} style={styles}>
-      <Chat />
-    </Col>
+        <Col xs={1} sm={4} md={3} id="MessengerContacts" style={styles}>
+          <Contacts ref="contacts" />
+        </Col>
 
-  </Row>
-)
+        <Col id="MessengerChat" xs={11} sm={8} md={9} style={styles}>
+          <Chat ref="chat" />
+        </Col>
+
+      </Row>
+    )
+  }
+
+}
 
 const styles = {
   // width: '100vw',
