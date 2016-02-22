@@ -8,8 +8,8 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
     "lint": "eslint src",
-    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require ignore-styles --recursive test/**/*.js",
-    "tdd": "npm test -- -R min --watch test/**/*.js"
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require ignore-styles --recursive",
+    "tdd": "npm test -- -R min --watch"
   },
   "repository": {
     "type": "git",
