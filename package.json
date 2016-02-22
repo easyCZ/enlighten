@@ -68,6 +68,7 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "flexboxgrid": "^6.3.0",
+    "immutable": "^3.7.6",
     "material-design-icons": "^2.2.0",
     "normalize.css": "^3.0.3",
     "react": "^0.14.3",
