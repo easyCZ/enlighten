@@ -1,5 +1,5 @@
 import { initConversations, loadConversations } from '../../src/contacts/ContactsActions';
-import { CONVERSATIONS_INIT, CONVERSATIONS_LOAD } from '../../src/contacts/ContactsActions';
+import { CONVERSATIONS_INIT, CONVERSATIONS_LOAD } from '../../src/contacts/ContactsActionTypes';
 
 
 describe('Contacts Actions', () => {

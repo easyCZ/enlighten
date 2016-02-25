@@ -1,4 +1,4 @@
-import { CONVERSATIONS_INIT, CONVERSATIONS_LOAD } from './ContactsActions';
+import { CONVERSATIONS_INIT, CONVERSATIONS_LOAD } from './ContactsActionTypes';
 
 
 export function initConversations() {
