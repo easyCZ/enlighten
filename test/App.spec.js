@@ -1,17 +1,17 @@
 import React from 'react';
 import expect from 'expect.js';
-import App from '../src/App.js';
+import { App } from '../src/App.js';
 import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
 
 
-describe('App', () => {
+describe('App with User connected', () => {
 
     let elem, node;
     let contacts, chat;
 
     before(() => {
-        elem = TestUtils.renderIntoDocument(<App />)
+        elem = TestUtils.renderIntoDocument(<App authenticated={true} />)
         node = ReactDOM.findDOMNode(elem)
 
         contacts = elem.refs.contacts
@@ -29,5 +29,6 @@ describe('App', () => {
     it('should have chat in its subtree', function() {
         expect(chat).to.be.ok()
     });
+
 
 })

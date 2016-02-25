@@ -8,8 +8,8 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
     "lint": "eslint src",
-    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require ignore-styles --recursive",
-    "tdd": "npm test -- -R min --watch"
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require ignore-styles --recursive --no-colors --growl",
+    "tdd": "npm test -- -R dot --watch"
   },
   "repository": {
     "type": "git",
@@ -68,7 +68,6 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "flexboxgrid": "^6.3.0",
-    "immutable": "^3.7.6",
     "material-design-icons": "^2.2.0",
     "normalize.css": "^3.0.3",
     "react": "^0.14.3",

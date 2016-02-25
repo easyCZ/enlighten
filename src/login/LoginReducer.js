@@ -1,19 +1,18 @@
-import { Map } from 'immutable';
 import { LOGIN, LOGOUT } from './LoginActionTypes'
 
-const initialState = Map({
+const initialState = {
     authenticated: false,
     username: null
-})
+}
 
 export default function loginReducer(state = initialState, action) {
 
     switch (action.type) {
         case LOGIN:
-            return Map({
+            return {
                 authenticated: true,
                 username: action.username
-            })
+            }
 
         case LOGOUT:
             return initialState
@@ -22,3 +21,5 @@ export default function loginReducer(state = initialState, action) {
             return state
     }
 }
+
+export { initialState };
