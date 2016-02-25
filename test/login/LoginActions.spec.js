@@ -1,5 +1,3 @@
-import expect from 'expect.js';
-
 import { login, logout } from '../../src/login/LoginActions';
 import { LOGIN, LOGOUT } from '../../src/login/LoginActionTypes';
 

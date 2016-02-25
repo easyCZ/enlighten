@@ -1,4 +1,3 @@
-import expect from 'expect.js';
 import LoginReducer from '../../src/login/LoginReducer';
 import { login, logout } from '../../src/login/LoginActions';
 

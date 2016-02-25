@@ -1,5 +1,4 @@
 import React from 'react';
-import expect from 'expect.js';
 import { App } from '../src/App.js';
 import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
