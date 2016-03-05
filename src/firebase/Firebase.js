@@ -8,13 +8,22 @@ class Firebase extends firebase {
         super(url);
     }
 
-    login(username) {
-        return this.child('users').push(username)
+    conversations(user) {
+      const ref = this.child('conversations').child(user.toString())
+      return ref.once('value');
     }
 
-    getRooms(fn) {
-    	return this.child('rooms').child('user1').on('value', fn)
-    }
+
+
+
+
+    // login(username) {
+    //     return this.child('users').push(username)
+    // }
+
+    // getRooms(fn) {
+    // 	return this.child('rooms').child('user1').on('value', fn)
+    // }
 
 }
 

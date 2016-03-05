@@ -1,6 +1,6 @@
 
 const FirebaseConfig = {
-    url: 'https://react-firebase-im.firebaseio.com/'
+    url: 'https://enlighten.firebaseio.com/'
 }
 
 export default FirebaseConfig;

@@ -5,8 +5,12 @@ const initialState = {
     username: null
 }
 
-export default function loginReducer(state = initialState, action) {
+const devInitialState = {
+    authenticated: true,
+    username: 'user1'
+}
 
+export default function loginReducer(state = devInitialState, action) {
     switch (action.type) {
         case LOGIN:
             return {

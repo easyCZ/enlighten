@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import login from './login/LoginReducer';
+import conversations from './contacts/ConversationsReducer';
 
 
 export const reducers = {
-  login
+  login,
+  conversations
 }
 
 const rootReducer = combineReducers(reducers)
