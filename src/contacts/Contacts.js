@@ -52,5 +52,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadConversations: (convos) => dispatch(loadConversations(convos))
 })
 
-
+export {
+  Contacts
+}
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

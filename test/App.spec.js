@@ -1,32 +1,25 @@
 import React from 'react';
 import { App } from '../src/App.js';
+import { Contacts } from '../src/contacts/Contacts';
 import TestUtils from 'react-addons-test-utils';
+import { findWithRef } from 'react-shallow-testutils';
 import ReactDOM from 'react-dom';
 
 
 describe('App with User connected', () => {
 
-    let elem, node;
-    let contacts, chat;
+    const renderer = TestUtils.createRenderer();
 
     before(() => {
-        elem = TestUtils.renderIntoDocument(<App authenticated={true} />)
-        node = ReactDOM.findDOMNode(elem)
-
-        contacts = elem.refs.contacts
-        chat = elem.refs.chat
-    })
-
-    it('should have a Messenger ID', () => {
-        expect(node.id).to.be.eql('Messenger');
+        renderer.render(<App authenticated={true} />)
     })
 
     it('should have contacts in its subtree', function() {
-        expect(contacts).to.be.ok()
+        expect(findWithRef(renderer.getRenderOutput(), 'contacts')).to.be.ok();
     });
 
     it('should have chat in its subtree', function() {
-        expect(chat).to.be.ok()
+        expect(findWithRef(renderer.getRenderOutput(), 'chat')).to.be.ok();
     });
 
 

@@ -8,7 +8,7 @@ describe('Conversations Reducer', () => {
 
   it('should have no conversations initially', () => {
     const state = conversationsReducer(undefined, {type: 'unknown'});
-    expect(state.conversations).to.eql([]);
+    expect(state.conversations).to.eql({});
   })
 
   it('should have not be loading initially', () => {
@@ -19,14 +19,18 @@ describe('Conversations Reducer', () => {
   it('should set loading to true when conversations init', () => {
     const action = initConversations()
     const state = conversationsReducer(initialState, action);
-    expect(state.conversations).to.eql([]);
+    expect(state.conversations).to.eql({});
     expect(state.loading).to.eql(true);
   })
 
   it('should add conversations to the state when loaded', () => {
     const action = loadConversations(conversations)
     const state = conversationsReducer(initialState, action);
-    expect(state.conversations).to.eql(conversations);
+    expect(state.conversations).to.eql({
+      1: {id: 1},
+      2: {id: 2},
+      3: {id: 3}
+    });
   })
 
   it('should set loading to false when convos are loaded', () => {
