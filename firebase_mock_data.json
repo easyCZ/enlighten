@@ -1,0 +1,54 @@
+{
+    "conversations": {
+        "user1": [
+            1, 2, 3, 4, 5
+        ]
+    },
+    "chats": {
+        "1": {
+            "participants": ["userA", "userB"],
+            "messages": {
+                "1457180514946": {
+                    "from": "user1",
+                    "message": "Hello world!"
+                }
+            }
+        },
+        "2": {
+            "participants": ["userA", "userB"],
+            "messages": {
+                "1457180514946": {
+                    "from": "user1",
+                    "message": "Hello world!"
+                }
+            }
+        },
+        "3": {
+            "participants": ["userA", "userB"],
+            "messages": {
+                "1457180514946": {
+                    "from": "user1",
+                    "message": "Hello world!"
+                }
+            }
+        },
+        "4": {
+            "participants": ["userA", "userB"],
+            "messages": {
+                "1457180514946": {
+                    "from": "user1",
+                    "message": "Hello world!"
+                }
+            }
+        },
+        "5": {
+            "participants": ["userA", "userB"],
+            "messages": {
+                "1457180514946": {
+                    "from": "user1",
+                    "message": "Hello world!"
+                }
+            }
+        }
+    }
+}
