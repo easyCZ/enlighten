@@ -8,12 +8,7 @@ class Conversations extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
   }
-
-  // onConversationSelect(key) {
-  //   this.prop
-  // }
 
   getListItems(conversations) {
     return Object.keys(conversations).map(id => (
