@@ -1,1 +1,2 @@
 export const CHAT_VIEW = 'CHAT_VIEW'
+export const CHAT_SEND_MESSAGE = 'CHAT_SEND_MESSAGE'
