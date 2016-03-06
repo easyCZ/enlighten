@@ -2,28 +2,28 @@ import FirebaseConfig from './FirebaseConfig';
 import firebase from 'firebase';
 
 
+const CONVERSATIONS = 'conversations'
+const CHATS = 'chats'
+const MESSAGES = 'messages'
+
+
 class Firebase extends firebase {
 
-    constructor(url) {
-        super(url);
-    }
+  constructor(url) {
+      super(url);
+  }
 
-    conversations(user) {
-      const ref = this.child('conversations').child(user.toString())
-      return ref.once('value');
-    }
+  conversations(user) {
+    const ref = this.child(CONVERSATIONS).child(user.toString())
+    return ref.once('value');
+  }
 
-
-
-
-
-    // login(username) {
-    //     return this.child('users').push(username)
-    // }
-
-    // getRooms(fn) {
-    // 	return this.child('rooms').child('user1').on('value', fn)
-    // }
+  sendMessage(chatId, message, onCompleteFn) {
+    return this.child(CHATS)
+      .child(chatId)
+      .child(MESSAGES)
+      .push({ text: message })
+  }
 
 }
 
