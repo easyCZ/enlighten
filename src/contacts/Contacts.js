@@ -33,6 +33,7 @@ class Contacts extends Component {
             <Conversations
               items={ this.props.conversations.conversations }
               loading={this.props.conversations.loading}
+              onSelect={this.props.onSelect}
             />
           </Col>
         </Row>
@@ -49,7 +50,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   initConversations: () => dispatch(initConversations()),
-  loadConversations: (convos) => dispatch(loadConversations(convos))
+  loadConversations: (convos) => dispatch(loadConversations(convos)),
+  selectConversation: (id) => dispatch(a)
 })
 
 export {

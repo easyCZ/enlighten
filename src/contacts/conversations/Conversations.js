@@ -8,11 +8,21 @@ class Conversations extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
   }
+
+  // onConversationSelect(key) {
+  //   this.prop
+  // }
 
   getListItems(conversations) {
     return Object.keys(conversations).map(id => (
-      <Avatar key={id} title={id.toString()} style={{display: 'block'}} />
+      <Avatar
+        onClick={this.props.onSelect.bind(this, id)}
+        key={id}
+        title={id.toString()}
+        style={{display: 'block'}}
+      />
     ));
   }
 

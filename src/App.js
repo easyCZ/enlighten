@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
 
 import Contacts from './contacts/Contacts';
 import Chat from './chat/Chat';
 import Login from './login/Login';
 import { login } from './login/LoginActions';
 import {Row, Col} from 'react-flexbox-grid';
+
+import { viewChat } from './chat/ChatActions';
 
 
 class App extends React.Component {
@@ -18,7 +19,10 @@ class App extends React.Component {
         <Row id="Messenger" style={styles}>
 
           <Col xs={1} sm={4} md={3} id="MessengerContacts" style={styles}>
-            <Contacts ref="contacts" />
+            <Contacts
+              ref="contacts"
+              onSelect={this.props.onConversationSelect}
+            />
           </Col>
           <Col id="MessengerChat" xs={11} sm={8} md={9} style={styles}>
             <Chat ref="chat" />
@@ -54,7 +58,9 @@ const styles = {
 
 export default connect(
   (state) => ({ authenticated: state.login.authenticated }),
-  () => ({})
+  (dispatch) => ({
+    onConversationSelect: (id) => dispatch(viewChat(id))
+  })
 )(App);
 
 export { App }
