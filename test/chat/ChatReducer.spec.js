@@ -44,6 +44,15 @@ describe('Chat Reducer', () => {
       const state = chatReducer(initialState, action)
       expect(state.messages).to.have.key(CHAT_ID.toString())
       expect(state.messages[CHAT_ID]).to.have.key(TIMESTAMP.toString())
+      expect(state.messages[CHAT_ID][TIMESTAMP]).to.eql(MESSAGE)
+    })
+
+    it('should add the message to message when received', () => {
+      const action = ChatActions.receiveMessage(CHAT_ID, MESSAGE, TIMESTAMP)
+      const state = chatReducer(initialState, action)
+      expect(state.messages).to.have.key(CHAT_ID.toString())
+      expect(state.messages[CHAT_ID]).to.have.key(TIMESTAMP.toString())
+      expect(state.messages[CHAT_ID][TIMESTAMP]).to.eql(MESSAGE)
     })
 
   })

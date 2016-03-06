@@ -7,7 +7,18 @@ export const initialState = {
 }
 
 
+const addMessage = (messages, action) => {
+  const { chatId, message, timestamp } = action
+  if (!(chatId in messages)) messages[chatId] = {};
+
+  messages[chatId][timestamp] = message;
+  return messages
+}
+
+
 export default function chatReducer(state = initialState, action) {
+
+  let messages;
 
   switch (action.type) {
 
@@ -15,10 +26,11 @@ export default function chatReducer(state = initialState, action) {
       return Object.assign({}, state, { chatView: action.chatId })
 
     case ChatActionTypes.CHAT_SEND_MESSAGE:
-      const { chatId, message, timestamp } = action
-      const messages = Object.assign({}, state.messages)
-      if (!(chatId in messages)) messages[chatId] = {}
-      messages[chatId][timestamp] = message
+      messages = addMessage(Object.assign({}, state.messages), action)
+      return Object.assign({}, state, { messages })
+
+    case ChatActionTypes.CHAT_RECEIVE_MESSAGE:
+      messages = addMessage(Object.assign({}, state.messages), action)
       return Object.assign({}, state, { messages })
 
 
