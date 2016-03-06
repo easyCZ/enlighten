@@ -11,4 +11,8 @@ describe('Root Reducer', () => {
     expect(reducers).to.have.key('conversations');
   })
 
+  it('should have the chat reducer', () => {
+    expect(reducers).to.have.key('chat');
+  })
+
 })
