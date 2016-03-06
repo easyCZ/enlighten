@@ -15,9 +15,18 @@ describe('Chat Actions', () => {
     })
   })
 
-  it('should have a send message action with chatId and message', () => {
+  it('should have a send message action', () => {
     expect(ChatActions.sendMessage(CHAT_ID, MESSAGE, TIMESTAMP)).to.eql({
       type: ChatActionTypes.CHAT_SEND_MESSAGE,
+      message: MESSAGE,
+      chatId: CHAT_ID,
+      timestamp: TIMESTAMP
+    })
+  })
+
+  it('should have a receive message action', () => {
+    expect(ChatActions.receiveMessage(CHAT_ID, MESSAGE, TIMESTAMP)).to.eql({
+      type: ChatActionTypes.CHAT_RECEIVE_MESSAGE,
       message: MESSAGE,
       chatId: CHAT_ID,
       timestamp: TIMESTAMP

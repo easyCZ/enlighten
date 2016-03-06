@@ -8,7 +8,13 @@ describe('Chat Action Types', () => {
   })
 
   it('should have an action to send a message', () => {
-    expect(ChatActionTypes.CHAT_SEND_MESSAGE).to.eql('CHAT_SEND_MESSAGE')
+    expect(ChatActionTypes.CHAT_SEND_MESSAGE)
+      .to.eql('CHAT_SEND_MESSAGE')
+  })
+
+  it('should have an action type to receive a message', () => {
+    expect(ChatActionTypes.CHAT_RECEIVE_MESSAGE)
+      .to.eql('CHAT_RECEIVE_MESSAGE')
   })
 
 })
