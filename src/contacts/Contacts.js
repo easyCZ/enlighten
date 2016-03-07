@@ -4,6 +4,7 @@ import { connect, Provider } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid';
 
 import ContactsToolbar from './toolbar/ContactsToolbar';
+import ContactsSearch from './search/ContactsSearch';
 import Conversations from './conversations/Conversations';
 import { initConversations, loadConversations } from './ContactsActions';
 import * as ChatActions from '../chat/ChatActions';
@@ -31,6 +32,9 @@ class Contacts extends Component {
         <Row middle="xs">
           <Col xs={12} >
             <ContactsToolbar />
+          </Col>
+          <Col xs={12} >
+            <ContactsSearch />
           </Col>
           <Col xs={12} style={style.conversations}>
             <Conversations

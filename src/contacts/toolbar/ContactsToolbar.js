@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-flexbox-grid';
+import IconButton from 'react-toolbox/lib/button';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import { ToolbarStyle } from '../../Styles';
 import * as Colors from '../../Colors';
@@ -13,7 +14,9 @@ const styles = {
   },
   icon: {
     marginRight: '0.5rem',
-    color: Colors.ACCENT
+    color: Colors.ACCENT,
+    cursor: 'pointer',
+    zIndex: 9999
   }
 }
 
@@ -24,11 +27,11 @@ export default class ContactsToolbar extends Component {
     return (
       <Row between="xs" middle="xs" style={styles.container}>
 
-        <Col xs={10}>
+        <Col xs={9}>
           Contacts
         </Col>
 
-        <Col xs={2}>
+        <Col xs={3}>
           <Row middle="xs" end="xs">
             <FontIcon value='message' style={styles.icon} />
           </Row>
@@ -39,3 +42,7 @@ export default class ContactsToolbar extends Component {
   }
 
 }
+
+// <Button icon="message" style={styles.icon}>
+//               <FontIcon value='message'  />
+//             </IconButton>
