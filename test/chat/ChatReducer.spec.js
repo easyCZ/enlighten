@@ -11,20 +11,20 @@ describe('Chat Reducer', () => {
 
     it('should be null initially', () => {
       const state = chatReducer(undefined, UNKNOWN_ACTION);
-      expect(state.chatView).to.eql(null);
+      expect(state.chatId).to.eql(null);
     })
 
-    it('should set the chatView to id of the chat when requested', () => {
+    it('should set the chatId to id of the chat when requested', () => {
       const action = ChatActions.viewChat(CHAT_ID)
       const state = chatReducer(initialState, action)
-      expect(state.chatView).to.eql(CHAT_ID)
+      expect(state.chatId).to.eql(CHAT_ID)
     })
 
     it('should change the state to a new one if already set', () => {
       const action = ChatActions.viewChat(999)
       const previousState = chatReducer(initialState, ChatActions.viewChat(CHAT_ID))
       const state = chatReducer(previousState, action)
-      expect(state.chatView).to.eql(999)
+      expect(state.chatId).to.eql(999)
     })
 
   })

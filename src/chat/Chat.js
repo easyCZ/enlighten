@@ -42,8 +42,7 @@ export default class Chat extends Component {
     return (
       <Provider store={store}>
         <Row id="Chat">
-          <ChatToolbar style={{backgroundColor: 'rgba(0, 0, 0, 0.15)'}} />
-          <div>Chat View: {this.props.chat.chatView}</div>
+          <ChatToolbar />
           <ChatMessages messages={this.state.messages} />
           <ChatInput onMessageSend={ this.sendMessage } />
         </Row>
@@ -54,7 +53,7 @@ export default class Chat extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  chat: state.chat
+  chatId: state.chat.chatId
 })
 const mapDispatchToProps = (dispatch) => ({
 

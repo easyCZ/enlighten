@@ -2,7 +2,7 @@ import * as ChatActionTypes from './ChatActionTypes'
 
 
 export const initialState = {
-  chatView: null,
+  chatId: null,
   messages: {}
 }
 
@@ -23,7 +23,7 @@ export default function chatReducer(state = initialState, action) {
   switch (action.type) {
 
     case ChatActionTypes.CHAT_VIEW:
-      return Object.assign({}, state, { chatView: action.chatId })
+      return Object.assign({}, state, { chatId: action.chatId })
 
     case ChatActionTypes.CHAT_SEND_MESSAGE:
       messages = addMessage(Object.assign({}, state.messages), action)
