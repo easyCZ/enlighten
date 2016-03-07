@@ -34,10 +34,13 @@ class App extends React.Component {
             />
           </Col>
 
-          <Col id="MessengerChat" xs={11} sm={8} md={9} style={styles}>
+          <Col
+            id="MessengerChat"
+            xs={11} sm={8} md={9}
+            style={styles}>
             { this.props.chatId
               ? <Chat ref="chat" chatId={this.props.chatId} />
-              : <div>Select chat to start messaging</div>
+              : <div></div>
             }
           </Col>
 
