@@ -9,11 +9,33 @@ import { Row } from 'react-flexbox-grid';
 
 import Firebase from '../firebase/Firebase';
 
+
 export default class Chat extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      messages: []
+    }
+  }
 
   sendMessage(message) {
     Firebase.sendMessage('1', message)
       .then((v) => console.log(v.key()))
+  }
+
+  componentDidMount() {
+    Firebase.watchChat('1', this.onMessageReceive.bind(this))
+  }
+
+  onMessageReceive(snapshot) {
+    let messages = []
+    snapshot.forEach((item) => {
+      messages.push(Object.assign(item.val(), {id: item.key()}))
+    })
+
+    this.setState({ messages })
   }
 
   render () {
@@ -22,7 +44,7 @@ export default class Chat extends Component {
         <Row id="Chat">
           <ChatToolbar style={{backgroundColor: 'rgba(0, 0, 0, 0.15)'}} />
           <div>Chat View: {this.props.chat.chatView}</div>
-          <ChatMessages />
+          <ChatMessages messages={this.state.messages} />
           <ChatInput onMessageSend={ this.sendMessage } />
         </Row>
       </Provider>
