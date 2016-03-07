@@ -8,7 +8,7 @@ import Firebase from '../../firebase/Firebase';
 const initialState = { message: '' }
 
 
-export default class ChatInput extends Component {
+class ChatInput extends Component {
 
   constructor(props) {
     super(props);
@@ -18,10 +18,9 @@ export default class ChatInput extends Component {
 
   onMessageSend(event) {
     event.preventDefault()
+    this.props.onMessageSend(this.state.message);
 
-    Firebase.sendMessage('1', this.state.message)
-      .then((v) => console.log(v.key()))
-
+    // Reset
     this.setState(Object.assign({}, initialState))
   }
 
@@ -41,3 +40,9 @@ export default class ChatInput extends Component {
   }
 
 }
+
+ChatInput.propTypes = {
+  onMessageSend: React.PropTypes.func.isRequired
+}
+
+export default ChatInput;
