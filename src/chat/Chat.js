@@ -7,6 +7,8 @@ import ChatMessages from './messages/ChatMessages';
 import ChatInput from './input/ChatInput';
 import { Row } from 'react-flexbox-grid';
 
+import * as ChatActions from './ChatActions';
+
 import Firebase from '../firebase/Firebase';
 
 
@@ -50,14 +52,14 @@ class Chat extends Component {
       messages.push(Object.assign(item.val(), {id: item.key()}))
     })
 
-    this.setState({ messages })
+    this.props.onMessagesLoad(this.props.chatId, messages);
   }
 
   render () {
     return (
         <Row id="Chat">
           <ChatToolbar chatId={this.props.chatId} />
-          <ChatMessages messages={this.state.messages} />
+          <ChatMessages messages={ this.props.messages } />
           <ChatInput onMessageSend={ this.sendMessage.bind(this) } />
         </Row>
     );
@@ -65,19 +67,19 @@ class Chat extends Component {
 
 }
 
-// Chat.propTypes = {
-//   chatId: React.PropTypes.number.isRequired
-// }
+Chat.propTypes = {
+  chatId: React.PropTypes.number.isRequired
+}
 
 const mapStateToProps = (state) => ({
-  // chatId: state.chat.chatId
+  chatId: state.chat.chatId,
+  messages: state.chat.messages[state.chat.chatId]
 })
 const mapDispatchToProps = (dispatch) => ({
-
+  onMessagesLoad: (chatId, messages) => dispatch(ChatActions.loadMessages(chatId, messages))
 })
 
-// export {
-//   Chat
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(Chat);
-export default Chat;
+export {
+  Chat
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

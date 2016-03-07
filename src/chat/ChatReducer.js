@@ -23,7 +23,9 @@ export default function chatReducer(state = initialState, action) {
   switch (action.type) {
 
     case ChatActionTypes.CHAT_VIEW:
-      return Object.assign({}, state, { chatId: action.chatId })
+      messages = Object.assign({}, state.messages)
+      messages[action.chatId] = []
+      return Object.assign({}, state, { chatId: action.chatId, messages })
 
     case ChatActionTypes.CHAT_SEND_MESSAGE:
       messages = addMessage(Object.assign({}, state.messages), action)
@@ -31,6 +33,11 @@ export default function chatReducer(state = initialState, action) {
 
     case ChatActionTypes.CHAT_RECEIVE_MESSAGE:
       messages = addMessage(Object.assign({}, state.messages), action)
+      return Object.assign({}, state, { messages })
+
+    case ChatActionTypes.CHAT_LOAD_MESSAGES:
+      messages = Object.assign({}, state.messages)
+      messages[action.chatId] = action.messages
       return Object.assign({}, state, { messages })
 
 

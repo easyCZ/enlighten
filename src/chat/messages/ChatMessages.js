@@ -12,7 +12,10 @@ class ChatMessages extends Component {
 
 
   renderMessages(messages) {
-    return messages.map((m) => <div key={m.id}>{m.text}</div>)
+    return messages
+      ? messages.map((m) => <div key={m.id}>{m.text}</div>)
+      : <span></span>;
+
   }
 
   render() {
