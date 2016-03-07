@@ -4,6 +4,8 @@ import { login } from './LoginActions';
 import {Button} from 'react-toolbox/lib/button';
 import Input from 'react-toolbox/lib/input';
 
+import Firebase from '../firebase/Firebase';
+
 
 class Login extends Component {
 
@@ -16,7 +18,11 @@ class Login extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    if (this.state.name) this.props.login(this.state.name);
+
+    if (this.state.name) {
+      Firebase.login(this.state.name)
+        .then((auth) => this.props.login(auth.username))
+    }
   }
 
   render() {

@@ -5,12 +5,31 @@ import firebase from 'firebase';
 const CONVERSATIONS = 'conversations'
 const CHATS = 'chats'
 const MESSAGES = 'messages'
+const USERS = 'users'
 
 
 class Firebase extends firebase {
 
   constructor(url) {
       super(url);
+  }
+
+  _createUser(username, uid) {
+    this.child(USERS).child(username).set({
+      uid
+    })
+  }
+
+  login(username) {
+    let createUser = this._createUser.bind(this)
+    let authRef;
+    return this.authAnonymously({ remember: 'sessionOnly'})
+      .then(auth => {
+        authRef = auth;
+        authRef.username = username
+        return createUser(username, auth.uid)
+      })
+      .then(() => authRef)
   }
 
   conversations(user) {
