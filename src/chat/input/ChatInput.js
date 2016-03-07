@@ -19,9 +19,8 @@ export default class ChatInput extends Component {
   onMessageSend(event) {
     event.preventDefault()
 
-    console.log('submitting', this.state.message);
-    Firebase.sendMessage('1', 'Hello World!')
-      .then((v) => console.log(v.key(), v.val()))
+    Firebase.sendMessage('1', this.state.message)
+      .then((v) => console.log(v.key()))
 
     this.setState(Object.assign({}, initialState))
   }
@@ -31,6 +30,7 @@ export default class ChatInput extends Component {
       <Col xs={12}>
         <form onSubmit={this.onMessageSend.bind(this)}>
           <Input
+            label='Message..'
             type='text'
             value={this.state.message}
             onChange={(v) => this.setState({message: v})}

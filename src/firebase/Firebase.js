@@ -18,7 +18,11 @@ class Firebase extends firebase {
     return ref.once('value');
   }
 
-  sendMessage(chatId, message, onCompleteFn) {
+  watchChat(chatId, changeFn) {
+    return this.child(CHATS).child(chatId).child(MESSAGES).on('value', changeFn)
+  }
+
+  sendMessage(chatId, message) {
     return this.child(CHATS)
       .child(chatId)
       .child(MESSAGES)
