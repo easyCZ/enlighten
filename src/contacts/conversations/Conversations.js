@@ -13,7 +13,7 @@ class Conversations extends Component {
   getListItems(conversations) {
     return Object.keys(conversations).map(id => (
       <Avatar
-        onClick={this.props.onSelect.bind(this, id)}
+        onClick={this.props.onSelect.bind(this, +id)}
         key={id}
         title={id.toString()}
         style={{display: 'block'}}

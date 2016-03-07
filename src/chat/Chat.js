@@ -10,10 +10,11 @@ import { Row } from 'react-flexbox-grid';
 import Firebase from '../firebase/Firebase';
 
 
-export default class Chat extends Component {
+class Chat extends Component {
 
   constructor(props) {
     super(props);
+    console.log('Chat', props);
 
     this.state = {
       messages: []
@@ -21,12 +22,27 @@ export default class Chat extends Component {
   }
 
   sendMessage(message) {
-    Firebase.sendMessage('1', message)
+    Firebase.sendMessage(this.props.chatId, message)
       .then((v) => console.log(v.key()))
   }
 
+  subscribe(chatId, callback) {
+    return Firebase.watchChat(chatId, callback)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('Chat next props', nextProps)
+    if (nextProps.chatId != this.props.chatId) {
+      Firebase.off('value', this.onMessageReceive.bind(this))
+
+      this.subscribe(nextProps.chatId, this.onMessageReceive.bind(this))
+    }
+  }
+
+
+
   componentDidMount() {
-    Firebase.watchChat('1', this.onMessageReceive.bind(this))
+    this.subscribe(this.props.chatId, this.onMessageReceive.bind(this))
   }
 
   onMessageReceive(snapshot) {
@@ -39,27 +55,32 @@ export default class Chat extends Component {
   }
 
   render () {
+    console.log('Chat props', this.props)
+
     return (
-      <Provider store={store}>
         <Row id="Chat">
-          <ChatToolbar />
+          <ChatToolbar chatId={this.props.chatId} />
           <ChatMessages messages={this.state.messages} />
-          <ChatInput onMessageSend={ this.sendMessage } />
+          <ChatInput onMessageSend={ this.sendMessage.bind(this) } />
         </Row>
-      </Provider>
     );
   }
 
 }
 
+// Chat.propTypes = {
+//   chatId: React.PropTypes.number.isRequired
+// }
+
 const mapStateToProps = (state) => ({
-  chatId: state.chat.chatId
+  // chatId: state.chat.chatId
 })
 const mapDispatchToProps = (dispatch) => ({
 
 })
 
-export {
-  Chat
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+// export {
+//   Chat
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default Chat;

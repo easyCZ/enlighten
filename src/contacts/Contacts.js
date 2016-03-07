@@ -6,6 +6,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import ContactsToolbar from './toolbar/ContactsToolbar';
 import Conversations from './conversations/Conversations';
 import { initConversations, loadConversations } from './ContactsActions';
+import * as ChatActions from '../chat/ChatActions';
 import Firebase from '../firebase/Firebase';
 import store from '../store';
 
@@ -33,7 +34,7 @@ class Contacts extends Component {
             <Conversations
               items={ this.props.conversations.conversations }
               loading={this.props.conversations.loading}
-              onSelect={this.props.onSelect}
+              onSelect={this.props.selectConversation}
             />
           </Col>
         </Row>
@@ -51,7 +52,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   initConversations: () => dispatch(initConversations()),
   loadConversations: (convos) => dispatch(loadConversations(convos)),
-  selectConversation: (id) => dispatch(a)
+  selectConversation: (id) => dispatch(ChatActions.viewChat(id))
 })
 
 export {

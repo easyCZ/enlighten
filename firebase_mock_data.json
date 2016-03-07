@@ -8,47 +8,24 @@
         "1": {
             "participants": ["userA", "userB"],
             "messages": {
-                "1457180514946": {
-                    "from": "user1",
-                    "message": "Hello world!"
-                }
+
             }
         },
         "2": {
             "participants": ["userA", "userB"],
-            "messages": {
-                "1457180514946": {
-                    "from": "user1",
-                    "message": "Hello world!"
-                }
-            }
+            "messages": {}
         },
         "3": {
             "participants": ["userA", "userB"],
-            "messages": {
-                "1457180514946": {
-                    "from": "user1",
-                    "message": "Hello world!"
-                }
-            }
+            "messages": {}
         },
         "4": {
             "participants": ["userA", "userB"],
-            "messages": {
-                "1457180514946": {
-                    "from": "user1",
-                    "message": "Hello world!"
-                }
-            }
+            "messages": {}
         },
         "5": {
             "participants": ["userA", "userB"],
-            "messages": {
-                "1457180514946": {
-                    "from": "user1",
-                    "message": "Hello world!"
-                }
-            }
+            "messages": {}
         }
     }
 }

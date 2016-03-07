@@ -11,7 +11,7 @@ class ChatToolbar extends Component {
           <Row>
 
             <Col xs={10}>
-              Contacts
+              Conversation ID: {this.props.chatId}
             </Col>
 
             <Col xs={2}>

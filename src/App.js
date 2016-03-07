@@ -12,6 +12,14 @@ import { viewChat } from './chat/ChatActions';
 
 class App extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      chatId: this.props.chatId
+    }
+  }
+
   render() {
 
     if (this.props.authenticated) {
@@ -24,8 +32,9 @@ class App extends React.Component {
               onSelect={this.props.onConversationSelect}
             />
           </Col>
+
           <Col id="MessengerChat" xs={11} sm={8} md={9} style={styles}>
-            <Chat ref="chat" />
+            <Chat  chatId={this.props.chatId} />
           </Col>
 
         </Row>
@@ -57,7 +66,10 @@ const styles = {
 }
 
 export default connect(
-  (state) => ({ authenticated: state.login.authenticated }),
+  (state) => ({
+    authenticated: state.login.authenticated,
+    chatId: state.chat.chatId
+  }),
   (dispatch) => ({
     onConversationSelect: (id) => dispatch(viewChat(id))
   })
