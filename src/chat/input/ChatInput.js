@@ -29,7 +29,7 @@ class ChatInput extends Component {
       <Col xs={12}>
         <form onSubmit={this.onMessageSend.bind(this)}>
           <Input
-            label='Message..'
+            placeholder="Message"
             type='text'
             value={this.state.message}
             onChange={(v) => this.setState({message: v})}
