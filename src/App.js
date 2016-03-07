@@ -8,6 +8,7 @@ import { login } from './login/LoginActions';
 import {Row, Col} from 'react-flexbox-grid';
 
 import { viewChat } from './chat/ChatActions';
+import * as Colors from './Colors';
 
 
 class App extends React.Component {
@@ -26,7 +27,7 @@ class App extends React.Component {
       return (
         <Row id="Messenger" style={styles}>
 
-          <Col xs={1} sm={4} md={3} id="MessengerContacts" style={styles}>
+          <Col xs={1} sm={4} md={3} id="MessengerContacts" style={styles.left}>
             <Contacts
               ref="contacts"
               onSelect={this.props.onConversationSelect}
@@ -65,7 +66,11 @@ const styles = {
   width: '100vw',
   height: '100vh',
   margin: 0,
-  boxShadow: '0 0 0 0.5px rgba(0, 0, 0, 0.2)'
+  boxShadow: '0 0 0 0.5px rgba(0, 0, 0, 0.2)',
+
+  left: {
+    backgroundColor: Colors.CONTACTS_BG
+  }
 }
 
 export default connect(

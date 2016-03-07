@@ -10,6 +10,8 @@ import * as ChatActions from '../chat/ChatActions';
 import Firebase from '../firebase/Firebase';
 import store from '../store';
 
+import * as Colors from '../Colors';
+
 
 class Contacts extends Component {
 
@@ -27,10 +29,10 @@ class Contacts extends Component {
     return (
       <Provider store={store}>
         <Row middle="xs">
-          <Col xs={12} style={{backgroundColor: 'rgba(0, 0, 0, 0.15)'}}>
+          <Col xs={12} >
             <ContactsToolbar />
           </Col>
-          <Col xs={12}>
+          <Col xs={12} style={style.conversations}>
             <Conversations
               items={ this.props.conversations.conversations }
               loading={this.props.conversations.loading}
@@ -42,6 +44,14 @@ class Contacts extends Component {
     )
   }
 
+}
+
+const style = {
+  conversations: {
+    // padding: 0,
+    height: '100%',
+    backgroundColor: Colors.CONTACTS_BG
+  }
 }
 
 

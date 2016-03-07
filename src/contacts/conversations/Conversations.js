@@ -4,6 +4,7 @@ import { List, Button, Avatar, ProgressBar } from 'react-toolbox';
 
 
 
+
 class Conversations extends Component {
 
   constructor(props) {
@@ -34,9 +35,9 @@ class Conversations extends Component {
   renderConversations() {
     let conversations = this.getListItems(this.props.items);
     return (
-      <List selectable ripple style={style}>
+      <div>
         {conversations}
-      </List>
+      </div>
     )
   }
 
@@ -54,9 +55,6 @@ Conversations.propTypes = {
   onSelect: React.PropTypes.func.isRequired
 }
 
-const style = {
-  fontSize: '0.8em'
-}
 
 
 export default Conversations;
