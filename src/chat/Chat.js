@@ -27,25 +27,24 @@ class Chat extends Component {
   }
 
   subscribe(chatId, callback) {
-    return Firebase.watchChat(chatId, callback)
+    return Firebase.subscribe(chatId, callback)
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('Chat next props', nextProps)
+
     if (nextProps.chatId != this.props.chatId) {
-      Firebase.off('value', this.onMessageReceive.bind(this))
+      Firebase.unsubscribe(this.props.chatId)
 
       this.subscribe(nextProps.chatId, this.onMessageReceive.bind(this))
     }
   }
-
-
 
   componentDidMount() {
     this.subscribe(this.props.chatId, this.onMessageReceive.bind(this))
   }
 
   onMessageReceive(snapshot) {
+
     let messages = []
     snapshot.forEach((item) => {
       messages.push(Object.assign(item.val(), {id: item.key()}))
@@ -55,8 +54,6 @@ class Chat extends Component {
   }
 
   render () {
-    console.log('Chat props', this.props)
-
     return (
         <Row id="Chat">
           <ChatToolbar chatId={this.props.chatId} />

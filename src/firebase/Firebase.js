@@ -18,8 +18,12 @@ class Firebase extends firebase {
     return ref.once('value');
   }
 
-  watchChat(chatId, changeFn) {
-    return this.child(CHATS).child(chatId).child(MESSAGES).on('value', changeFn)
+  subscribe(chatId, changeFn) {
+    return this._getMessagesRef(chatId).on('value', changeFn)
+  }
+
+  unsubscribe(chatId) {
+    return this._getMessagesRef(chatId).off('value')
   }
 
   sendMessage(chatId, message) {
@@ -27,6 +31,11 @@ class Firebase extends firebase {
       .child(chatId)
       .child(MESSAGES)
       .push({ text: message })
+  }
+
+
+  _getMessagesRef(chatId) {
+    return this.child(CHATS).child(chatId).child(MESSAGES);
   }
 
 }

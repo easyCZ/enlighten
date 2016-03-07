@@ -2,7 +2,7 @@ import * as ChatActionTypes from './ChatActionTypes'
 
 
 export const initialState = {
-  chatId: 1,
+  chatId: null,
   messages: {}
 }
 

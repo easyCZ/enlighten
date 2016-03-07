@@ -6,12 +6,12 @@ import { findWithRef } from 'react-shallow-testutils';
 import ReactDOM from 'react-dom';
 
 
-describe('App with User connected', () => {
+describe('App with User connected and chat Id', () => {
 
     const renderer = TestUtils.createRenderer();
 
     before(() => {
-        renderer.render(<App authenticated={true} />)
+        renderer.render(<App authenticated={true} chatId={123} />)
     })
 
     it('should have contacts in its subtree', function() {
