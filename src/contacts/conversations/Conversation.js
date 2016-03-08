@@ -9,7 +9,9 @@ console.log('ConversationStyles', ConversationStyles)
 const Conversation = (props) => (
   <Row onClick={props.onClick} style={styles.container} className={ConversationStyles.Conversation}>
     <Col xs={3}>
-      <Avatar style={styles.avatar} title={props.image.toString()} />
+      <Avatar >
+        <img src="https://s-media-cache-ak0.pinimg.com/236x/0c/78/62/0c7862aa65ad6eede84b2b82a501423f.jpg" />
+      </Avatar>
     </Col>
     <Col xs={9}>
       <Row style={styles.firstLine}>
@@ -46,7 +48,10 @@ const styles = {
     marginBottom: '0.4rem'
   },
   headline: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   },
   time: {
     fontSize: '0.7rem',

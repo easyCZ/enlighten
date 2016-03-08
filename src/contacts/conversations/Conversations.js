@@ -17,7 +17,7 @@ class Conversations extends Component {
     return Object.keys(conversations).map(id => {
       let conversation = {
         id,
-        name: `First Last ${id}`,
+        name: `Daenerys Targeryen ${id}`,
         image: id,
         time: Math.ceil(Date.now() / 1000000000),
         message: `This is the last message of the conversation id ${id}. There's some more text after this sentence and now there is some more`
