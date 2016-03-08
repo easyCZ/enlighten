@@ -23,6 +23,7 @@ export default function chatReducer(state = initialState, action) {
   switch (action.type) {
 
     case ChatActionTypes.CHAT_VIEW:
+      console.log(state, action);
       messages = Object.assign({}, state.messages)
       messages[action.chatId] = []
       return Object.assign({}, state, { chatId: action.chatId, messages })

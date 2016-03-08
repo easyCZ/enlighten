@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { List, Button, Avatar, ProgressBar } from 'react-toolbox';
 
+import Conversation from './Conversation';
+
 
 
 
@@ -12,14 +14,18 @@ class Conversations extends Component {
   }
 
   getListItems(conversations) {
-    return Object.keys(conversations).map(id => (
-      <Avatar
-        onClick={this.props.onSelect.bind(this, +id)}
-        key={id}
-        title={id.toString()}
-        style={{display: 'block'}}
-      />
-    ));
+    return Object.keys(conversations).map(id => {
+      let conversation = {
+        id,
+        name: `First Last ${id}`,
+        image: id,
+        time: Math.ceil(Date.now() / 1000000000),
+        message: `This is the last message of the conversation id ${id}. There's some more text after this sentence and now there is some more`
+      }
+      return (
+        <Conversation onClick={this.props.onSelect.bind(this, +id)} {...conversation} />
+      )
+    });
   }
 
   renderProgressBar() {
