@@ -5,11 +5,12 @@ import store from '../store';
 import ChatToolbar from './toolbar/ChatToolbar';
 import ChatMessages from './messages/ChatMessages';
 import ChatInput from './input/ChatInput';
-import { Row } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 
 import * as ChatActions from './ChatActions';
 
 import Firebase from '../firebase/Firebase';
+import * as Colors from '../Colors';
 
 
 class Chat extends Component {
@@ -58,13 +59,29 @@ class Chat extends Component {
   render () {
     return (
         <Row id="Chat">
-          <ChatToolbar chatId={this.props.chatId} />
-          <ChatMessages messages={ this.props.messages } />
-          <ChatInput onMessageSend={ this.sendMessage.bind(this) } />
+          <Col xs={12}>
+            <Row>
+              <ChatToolbar chatId={this.props.chatId} />
+            </Row>
+            <Row style={styles.messages}>
+              <ChatMessages messages={ this.props.messages } />
+            </Row>
+            <Row>
+              <ChatInput onMessageSend={ this.sendMessage.bind(this) } />
+            </Row>
+          </Col>
         </Row>
     );
   }
 
+}
+
+const styles = {
+  messages: {
+    height: 'calc(100vh - 100px)',
+    // borderTop: `1px solid ${Colors.DIVIDER}`,
+    borderBottom: `1px solid ${Colors.DIVIDER}`
+  }
 }
 
 Chat.propTypes = {

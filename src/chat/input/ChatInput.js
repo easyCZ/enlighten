@@ -26,9 +26,10 @@ class ChatInput extends Component {
 
   render() {
     return (
-      <Col xs={12}>
+      <Col xs={12} style={{marginTop: '-1.8rem'}}>
         <form onSubmit={this.onMessageSend.bind(this)}>
           <Input
+            style={{fontSize: '1rem'}}
             placeholder="Message"
             type='text'
             value={this.state.message}
