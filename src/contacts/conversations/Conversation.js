@@ -9,7 +9,7 @@ console.log('ConversationStyles', ConversationStyles)
 const Conversation = (props) => (
   <Row onClick={props.onClick} style={styles.container} className={ConversationStyles.Conversation}>
     <Col xs={3}>
-      <Avatar title={props.image.toString()} />
+      <Avatar style={styles.avatar} title={props.image.toString()} />
     </Col>
     <Col xs={9}>
       <Row style={styles.firstLine}>
@@ -37,6 +37,9 @@ const styles = {
     maxHeight: '90px',
     padding: '0.2rem 0',
     cursor: 'pointer'
+  },
+  avatar: {
+    // padding: '0.5rem'
   },
   firstLine: {
     marginTop: '0.1rem',
